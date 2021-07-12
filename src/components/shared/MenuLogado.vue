@@ -7,20 +7,27 @@
             <router-link class="nav-item nav-link" to="/nova-postagem">
                 <img src="../../assets/img/adicionar.png" alt="Nova Postagem" class="icones-menu">
             </router-link>
-            <router-link class="nav-item nav-link" to="/sair">
-                <img src="../../assets/img/sair.png" alt="Nova Postagem" class="icones-menu">
-            </router-link>
-       
+            
+            <img src="../../assets/img/sair.png" @click="efetuarLogout" alt="Nova Postagem" class="icones-menu">
+            
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    methods:{
+        efetuarLogout(){
+            this.$store.dispatch('deslogarUsuario')
+            this.$router.push({name:'login'})
+            window.location.reload()
+        }
+    }
 }
 </script>
 
 <style>
-
+.icones-menu{
+    cursor: pointer;
+}
 </style>

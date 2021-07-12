@@ -61,23 +61,9 @@ export default {
                 this.mensagem = 'Não foi possível salvar. Tente novamente'
                 this.tipoMensagem = 'erro'
                 console.error(err.message)
-                window.localStorage.setItem('publicacao-titulo', this.form.titulo)
-                window.localStorage.setItem('publicacao-conteudo', this.form.publicacao)  
-                window.localStorage.removeItem('tkn')              
                 this.$router.push({name: 'login'})
                 document.location.reload()
             })
-        },
-        created(){
-            console.log(' n gravado')
-            const dadosFormTitulo = window.localStorage.getItem('publicacao-titulo');
-            const dadosFormPublicacao = window.localStorage.getItem('publicacao-titulo');
-            if(dadosFormTitulo && dadosFormPublicacao){
-                console.log('gravado')
-                this.form.titulo =  dadosFormTitulo.titulo
-                this.form.publicacao = dadosFormPublicacao.publicacao
-            }
-                
         }
     },
     components:{

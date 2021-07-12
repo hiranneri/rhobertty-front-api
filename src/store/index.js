@@ -17,9 +17,6 @@ const vuexLocalStorage = new VuexPersist({
     storage: window.localStorage,
 })
 
-
-
-
 const mutations = {
     DEFINIR_USUARIO_LOGADO(state, {token, usuario}){
         state.token = token
@@ -27,6 +24,8 @@ const mutations = {
     },
     DESLOGAR_USUARIO(state){
         state.token = null
+        state.usuario = null
+        state.postagens = null
     },
     DEFINIR_POSTAGENS(state, {postagens}){
         state.postagens = postagens
@@ -68,6 +67,9 @@ const actions = {
     },
     atualizarPostagens({commit}, idPublicacao){
         commit('EXCLUIR_POSTAGEM', idPublicacao)
+    },
+    deslogarUsuario({commit}){
+        commit('DESLOGAR_USUARIO')
     }
 }
 
