@@ -56,13 +56,10 @@ export default {
                     this.tipoMensagem = 'sucesso'
                     this.mensagem = 'Salvo com sucesso'                
                 })
-                .catch((err) => {
-                    this.tipoMensagem = 'erro'
-                    this.mensagem = 'Não foi possível salvar. Tente novamente'
-                    console.error(err.message)
-                    window.localStorage.setItem('dados', this.postagem)
-                    window.localStorage.removeItem('tkn')
+                .catch(() => {
+                    localStorage.clear()
                     this.$router.push({name: 'login'})
+                    location.reload()
                 })
         }
     },

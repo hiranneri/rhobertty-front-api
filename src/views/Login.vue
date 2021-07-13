@@ -1,6 +1,7 @@
 <template>
 <div class="corpo">
    <main>
+            <Loader v-if="loading" class="loader"/>
         <h2>
             <a href="https://rhoberttyvue.vercel.app/" target="_blank">
                 <img src="../assets/img/logo.webp" alt="Logo" class="img-login">
@@ -30,6 +31,7 @@
 
 <script>
 import Mensagem from '@/components/shared/Mensagem.vue'
+import Loader from '@/components/Loader.vue'
 export default {
     name: 'login',
     data(){
@@ -39,14 +41,18 @@ export default {
                 senha:'',
             },
             mensagem:'',
-            tipoMensagem:''
+            tipoMensagem:'',
+            loading: false
         }
     },
     methods:{
         acessar(){
+            this.loading = true
            this.$store.dispatch('efetuarLogin', this.form).then(()=> {
                this.$router.push({name: 'dashboard'})
+               this.loading = false
            }).catch((err)=>{
+               this.loading = false
                this.tipoMensagem = 'erro'
                if(err.request.status>400 && err.request.status<499){
                    this.mensagem = 'Email e/ou senha inválidos'
@@ -58,7 +64,8 @@ export default {
       
     },
     components:{
-        Mensagem
+        Mensagem,
+        Loader
     }
 }
 </script>
@@ -89,6 +96,10 @@ main{
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
    
+}
+.loader{
+    text-align: center;
+    margin-bottom: 30px;
 }
 .img-login{
     width: 50%;

@@ -13,8 +13,7 @@ const state = {
 
 //usar process.env.KEY_VUEXPERSIST
 const vuexLocalStorage = new VuexPersist({
-    key: 'tkn',
-    storage: window.localStorage,
+    
 })
 
 const mutations = {

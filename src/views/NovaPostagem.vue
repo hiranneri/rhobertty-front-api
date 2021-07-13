@@ -57,10 +57,9 @@ export default {
                 this.tipoMensagem = 'sucesso'
                 this.mensagem = 'Salvo com sucesso'                
             })
-            .catch((err) => {
+            .catch(() => {
                 this.mensagem = 'Não foi possível salvar. Tente novamente'
                 this.tipoMensagem = 'erro'
-                console.error(err.message)
                 this.$router.push({name: 'login'})
                 document.location.reload()
             })
@@ -74,7 +73,12 @@ export default {
 </script>
 
 <style scoped>
-
+h1{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 form{
     margin: 0 auto;
     width: 50%;
