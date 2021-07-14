@@ -18,7 +18,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <img src="../../assets/img/sair.png" alt="Inicio" id="sair" class="icone-menu">
+                    <img src="../../assets/img/sair.png" alt="Inicio" id="sair" class="icone-menu" @click="efetuarLogout">
                     <p class="legenda-icone">Sair</p>
                 </li>
             </ul>
