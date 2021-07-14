@@ -1,32 +1,21 @@
 <template>
-<div>
   <main>
-      <h1>Nova Postagem</h1>
-      <Mensagem :mensagem="mensagem" :tipoMensagem="tipoMensagem"/>
-      <form>
-          <!-- Campo imagem será adicionado quando o projeto for sustentado pela AWS
-          <div class="campos">
-            <label for="imagem">Imagem:</label>
-            <input type="file" name="imagem" @change="mostraCaminhoArquivo" id="imagem">
-          </div>
-          -->
-            <div class="campos">
-                <label for="titulo">Título</label><br>
-                <input type="text" name="titulo" id="titulo" class="campo-dados" v-model="form.titulo" 
-                min="3" max="350"    required>
-
-            </div>
-
-            <div class="campos">
-                <label for="texto">Postagem</label>
-                <textarea name="texto" id="campo-post"  class="campo-dados" 
-                min="3" max="5000" v-model="form.publicacao" required></textarea>
-            </div>
-
-            <button class="btn-enviar" @click.prevent="postar">Postar</button>
-      </form>
+    <h1>Nova Postagem</h1>
+    <Mensagem :mensagem="mensagem" :tipoMensagem="tipoMensagem"/>
+    <form>
+        <div class="form-group">
+            <label for="titulo">Título: </label>
+            <input type="text" class="form-control" id="titulo" min="3" max="700" v-model="form.titulo" placeholder="Título" required>
+        </div>
+        <div class="form-group">
+            <label for="postagem">Postagem</label>
+            <textarea name="texto" id="postagem"  class="form-control" 
+                        min="3" max="5000" v-model="form.publicacao" placeholder="Digite o texto da sua postagem" required></textarea>
+        </div>
+        <button class="btn-enviar" @click.prevent="postar">Postar</button>
+    </form>
   </main>
-</div>
+
 </template>
 
 <script>
@@ -49,20 +38,37 @@ export default {
             console.log(file)
         },
         postar(){
-            const usuarioLogado = this.$store.getters.usuarioLogado
-            const idUsuario = usuarioLogado.id
-            const body = this.form
-            this.$http.post(`usuario/${idUsuario}/publicacoes`, body)
-            .then(() => {
-                this.tipoMensagem = 'sucesso'
-                this.mensagem = 'Salvo com sucesso'                
-            })
-            .catch(() => {
-                this.mensagem = 'Não foi possível salvar. Tente novamente'
+            if(this.validar()){
+                const usuarioLogado = this.$store.getters.usuarioLogado
+                const idUsuario = usuarioLogado.id
+                const body = this.form
+                this.$http.post(`usuario/${idUsuario}/publicacoes`, body)
+                .then(() => {
+                    this.tipoMensagem = 'sucesso'
+                    this.mensagem = 'Salvo com sucesso'                
+                })
+                .catch(() => {
+                    this.mensagem = 'Não foi possível salvar. Tente novamente'
+                    this.tipoMensagem = 'erro'
+                    this.$router.push({name: 'login'})
+                    document.location.reload()
+                })
+            }else{
+                this.mensagem = 'Preenchimento Incorreto';
                 this.tipoMensagem = 'erro'
-                this.$router.push({name: 'login'})
-                document.location.reload()
-            })
+                return;
+            }
+        },
+        validar(){
+            const titulo = this.form.titulo;
+            const publicacao = this.form.publicacao;
+            if(titulo.length<3 || titulo>700){
+                return false;
+            }
+            if(publicacao.length<3 || publicacao.length>5000){
+                return false;
+            }
+            return true
         }
     },
     components:{
@@ -73,32 +79,23 @@ export default {
 </script>
 
 <style scoped>
+main{
+    background-color: rgb(89, 155, 117);
+    height: 100vh;
+}
 h1{
     text-align: center;
     font-weight: bold;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
-form{
-    margin: 0 auto;
-    width: 50%;
-    text-align: left;
-    margin-top: 20px;
-    background: #fcfcfc21; 
-    padding: 30px;
+section{   
     border-radius: 25px;
+    background-color: rgba(23, 207, 143, 0.23);
+    width: 50%;
+    margin: 0 auto;   
 }
+form
 
-.campos{
-    margin: 10px 0;
-}
-.campo-dados{
-    width: 90%;
-    height: 35px;
-    font-size: 15px;
-    padding: 10px;
-
-}
 label{
     font-weight: bold;
 }
@@ -117,13 +114,13 @@ input[type='file']{
     display: none;
     
 }
-
-#campo-post{
-    height: 250px;
+form{
+    width: 50%;
+    margin: 0 auto;
 }
 
 .btn-enviar{
-    width: 90%;
+    width: 100%;
     height: 50px;
     font-size: 16px;
     background: linear-gradient(to right, rgb(64, 174, 71), rgba(93, 167, 187, 0.78));  
@@ -138,16 +135,7 @@ input[type='file']{
 }
 @media (max-width: 600px){
     form{
-        margin-top: 10px;
-        margin-bottom: 40px;
-        width: 80%;
-    }
-    #titulo{
-        width: 240px;
-    }
-    #campo-post{
-       
-        height: 170px;
+        width: 90%;
     }
 }
 </style>
