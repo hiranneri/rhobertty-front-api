@@ -1,23 +1,17 @@
 <template>
-    <li class="item-post">
+    <div class="item-post">
         <div class="container-imagem">
             <img src="../assets/img/logo.webp" alt="Foto da Publicação" class="imagem-post">
-
-            <!-- @click="confirmarExclusao" 
-                $emit('excluir', post)"
-            -->
             <BotaoExcluir @click="excluir" @botaoAtivado="excluir(post)"/>
-            
             <router-link :to="{ name:'editar-postagem', params:{id:post.id}}" :post="post">
                 <img src="../assets/img/editar.png" alt="Editar Postagem" class="icone-editar">
             </router-link>
         </div>
-    
         <p class="titulo-publicacao">{{post.titulo}}</p> 
-        <p class="descricao-post"> {{ publicacaoLimitada }}       </p>
-    
+        <p class="descricao-post"> {{ publicacaoLimitada }}</p>
+
         <p class="data-publicacao">23, Maio, 2021</p>
-    </li> 
+    </div>
 </template>
 
 <script>
@@ -78,10 +72,8 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 30%;
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 20px;
+    margin: 10px;
+
 }
 .item-post:hover{
     border: 4px solid white;

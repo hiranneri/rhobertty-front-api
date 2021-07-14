@@ -7,11 +7,15 @@
                 <img src="@/assets/img/adicionar.png" alt="Nova Postagem" class="icones-menu">
             </router-link>
             
-            <ul>
-                <Loader v-if="loading" class="loader" />
+            <Loader v-if="loading" class="loader" />
+
+             <div class="container-posts">
+                
                 <ItemPost v-for="post in postagens" :key="post.titulo" :post="post" 
-                    @excluir="atualizarLista(post)" class="items-post"/>
-            </ul>
+                    @excluir="atualizarLista(post)"/>
+                
+            </div>
+             
         </main>
        
     </section>
@@ -72,32 +76,32 @@ export default {
 </script>
 
 <style scoped>
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-body{
-    background-color: rgb(129, 152, 129);
-
+section{
+    background-color: rgb(89, 155, 117);
 }
 h1{
     text-align: center;
     color: black;
     font-weight: bold;
     font-size: 40px;
-    font-size: 3.5rem;
-    margin-top: 50px;
+}
 
-}
-main{
-    margin-top: 20px;
-}
 .loader{
     text-align: center;
 }
-.items-post{
-    display: inline-block;
+.container-posts{
+    display: grid;
+    margin-left: 8%;
+    grid-template-columns: 350px 350px 350px;
+    text-align: center;
+   
+}
+@media (max-width: 600px){
+    .container-posts{
+        margin-left: 5px;
+        grid-template-columns: 310px 310px 310px;
+
+    }
 }
 
 </style>

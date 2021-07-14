@@ -1,16 +1,17 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-light menu">
-    <img src="../../assets/img/logo.webp" alt="Logo Rhobertty" class="logo" >
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <MenuLogado v-if="isUsuarioLogado"/>
-</nav>  
+    <header id="section">
+       <router-link to="/" id="logoEscriba"> 
+            <img src="../../assets/img/logo.webp" alt="Logotipo Escriba" id="logo" >
+        </router-link>
+       <Menu v-if="isUsuarioLogado"/>
+
+    </header>
+ 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import MenuLogado from '@/components/shared/MenuLogado.vue'
+import Menu from '@/components/shared/MenuLogado.vue'
 export default {
     name: 'menu',
     methods:{
@@ -24,33 +25,28 @@ export default {
         ...mapGetters(['isUsuarioLogado'])        
     },
     components:{
-        MenuLogado
+        Menu
     }
 }
 </script>
 
-<style>
-    ul{
-        list-style: none;
+<style scoped>
+    #logo{
+        width: 100px;
+        height: 50px;
     }
-    .menu{
-        background-color:rgb(93 167 187 / 78%);
+ #section{
+        box-sizing: border-box;
+        display: flex;
+        background-color: rgba(83, 141, 157, 0.78);
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        align-items: center;
+        height: 100px;
+        padding: 1rem;
+        justify-content: space-between;
+        
     }
-    .logo{
-        width: 150px;
-        height: 70px;
-    }
-    .container-menu{
-        float: right;
-    }
-    .icones-menu{
-        width: 30px;
-        height: 30px;
-    }
-    @media (max-width: 600px){
-    
-    .icones-menu{
-        margin: 0 auto;
-    }
-    }
+
 </style>

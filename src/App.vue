@@ -1,7 +1,8 @@
 <template>
   <div id="app">
      <Menu/>
-    <router-view class="componentes"/>
+    <router-view/>
+   
   </div>
 </template>
 
@@ -9,17 +10,19 @@
 import Menu from '@/components/shared/Menu.vue'
 export default {
   components:{
-    Menu
+    Menu,
+    
   }
 }
 </script>
 
 <style>
 #app{
-  background-color: rgb(89, 155, 117);
-}
-.componentes{
+
   height: 100vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 .mensagem{
     text-align: center;
