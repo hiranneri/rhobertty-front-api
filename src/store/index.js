@@ -45,7 +45,7 @@ const actions = {
                 resolve(response.data)
             })
             .catch(err=>{
-                console.error(err.message)
+               
                 reject(err)
             })
         })
@@ -59,7 +59,7 @@ const actions = {
                 resolve(response.data)
             })
             .catch(err=>{
-                console.error(err.message)
+               
                 reject(err)
             })
         })

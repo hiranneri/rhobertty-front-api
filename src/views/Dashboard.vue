@@ -51,7 +51,6 @@ export default {
             
         }).catch((err)=>{
             this.loading = false
-            console.error(err.message)
             if(err.request.status>400 && err.request.status<499){
                 localStorage.clear()
                 this.$router.push({name: 'login'})

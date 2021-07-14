@@ -41,7 +41,6 @@ export default {
                 })
                 .catch((err) => {
                     alert('Não foi possível excluir. Tente novamente');
-                    console.error(err.message)
                 })
                
             }

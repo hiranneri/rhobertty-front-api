@@ -33,10 +33,6 @@ export default {
         }
     },
     methods:{
-        mostraCaminhoArquivo(event){
-            const file = event.target.files[0].name;
-            console.log(file)
-        },
         postar(){
             if(this.validar()){
                 const usuarioLogado = this.$store.getters.usuarioLogado

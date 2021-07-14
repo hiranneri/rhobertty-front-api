@@ -32,10 +32,6 @@ export default {
         }
     },
     methods:{
-        mostraCaminhoArquivo(event){
-            const file = event.target.files[0].name;
-            console.log(file)
-        },
         editarPostagem(){
             const usuarioLogado = this.$store.getters.usuarioLogado
             const idUsuario = usuarioLogado.id
