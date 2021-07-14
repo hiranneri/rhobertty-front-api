@@ -39,7 +39,7 @@ export default {
                     alert('Excluído com sucesso')
                     this.$emit('excluir', this.postagem)                            
                 })
-                .catch((err) => {
+                .catch(() => {
                     alert('Não foi possível excluir. Tente novamente');
                 })
                
