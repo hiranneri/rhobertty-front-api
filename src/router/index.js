@@ -4,6 +4,7 @@ import Dashboard from '../views/Dashboard.vue'
 import Login from '../views/Login.vue'
 import NovaPostagem from '../views/NovaPostagem.vue'
 import EditarPostagem from '../views/EditarPostagem'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,10 @@ const routes = [
   {
     path: '',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: {
+      publica: true
+    }
   },
   {
     path: '/home',
@@ -35,5 +39,13 @@ const router = new VueRouter({
   routes,
   mode:'history'
 })
+
+router.beforeEach((routeTo,routeFrom, next)=>{
+  if(!routeTo.meta.publica && !store.state.token){
+    return next({path:''})
+  }
+  next()
+})
+
 
 export default router
