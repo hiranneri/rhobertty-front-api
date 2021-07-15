@@ -6,16 +6,16 @@
 
             <ul class="menu">
                 <li>
-                    <router-link to="/home" class="item-menu">
+                    <div @click="acessarHome" class="item-menu">
                         <img src="../../assets/img/home.png" alt="Inicio" id="logo" class="icone-menu">
                         <p class="legenda-icone">Home</p>                  
-                    </router-link>
+                    </div>
                 </li>
                 <li> 
-                    <router-link to="/nova-postagem" class="item-menu">
+                    <div @click="acessarNovaPostagem" class="item-menu">
                         <img src="../../assets/img/adicionar.png" alt="Inicio" id="logo" class="icone-menu">
                         <p class="legenda-icone">Nova Postagem</p>                  
-                    </router-link>
+                    </div>
                 </li>
                 <li>
                     <img src="../../assets/img/sair.png" alt="Inicio" id="sair" class="icone-menu" @click="efetuarLogout">
@@ -28,6 +28,10 @@
 <script>
 export default {
     methods:{
+        fecharMenu(){
+            let menuNav = document.querySelector('.navegacao');
+            menuNav.classList.remove('active');
+        },
         efetuarLogout(){
             this.$store.dispatch('deslogarUsuario')
             this.$router.push({name:'login'})
@@ -39,6 +43,14 @@ export default {
             }
             let menuNav = document.querySelector('.navegacao');
             menuNav.classList.toggle('active')
+        },
+        acessarHome(){
+            this.fecharMenu();
+            this.$router.push({name: 'dashboard'})
+        },
+        acessarNovaPostagem(){
+            this.fecharMenu();
+            this.$router.push({name: 'nova-postagem'})
         }
     }
 }
@@ -56,6 +68,7 @@ export default {
     .icone-menu{
         width: 30px;
         height: 30px;
+        cursor: pointer;
     }
     .item-menu{
         display: block;
@@ -133,7 +146,10 @@ export default {
             display: inline;
             color: white;            
             margin-left: 15px;
-            
+            cursor: pointer;
+        }
+        .icone-menu{
+            cursor: pointer;
         }
     }
 </style>
