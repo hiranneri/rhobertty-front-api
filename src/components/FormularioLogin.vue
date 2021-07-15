@@ -97,6 +97,9 @@ form{
     display: flex;
     flex-direction: column;
 }
+label{
+    margin-top: 10px;
+}
 form .campos:first-child{
     margin-bottom: 1.5rem;
 }

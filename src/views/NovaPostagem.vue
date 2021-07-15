@@ -90,7 +90,14 @@ section{
     width: 50%;
     margin: 0 auto;   
 }
-form
+form{
+    padding: 40px;
+    background: #83a8a8;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
 
 label{
     font-weight: bold;
