@@ -1,11 +1,11 @@
 <template>
-    <div class="item-post">
+    <div class="item-post col-md-4">
         <div class="container-imagem">
-            <img src="../assets/img/logo.webp" alt="Foto da Publicação" class="imagem-post">
-            <BotaoExcluir @click="excluir" @botaoAtivado="excluir(post)"/>
             <router-link :to="{ name:'editar-postagem', params:{id:post.id}}" :post="post">
                 <img src="../assets/img/editar.png" alt="Editar Postagem" class="icone-editar">
             </router-link>
+            <img src="../assets/img/logo.webp" alt="Foto da Publicação" class="imagem-post">
+            <BotaoExcluir @click="excluir" @botaoAtivado="excluir(post)"/>
         </div>
         <p class="titulo-publicacao">{{post.titulo}}</p> 
         <p class="descricao-post"> {{ publicacaoLimitada }}</p>
@@ -82,18 +82,20 @@ export default {
     width: 185px;
     height: 150px;
     min-width: 185px;
+    margin-left: 40px;
+    margin-top: 20px;
 }
 .icone-editar{
     margin-top: 15px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    float: right;
+    float: left;
 }
 .icone-excluir{
-     margin-top: 15px;
-    width: 40px;
-    height: 40px;
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     float: right;
 }
@@ -112,6 +114,7 @@ a{
     margin-top: 10px;
     margin-left: 20px;
     width: 100%;
+    padding-right: 10px;
 }
 .descricao-post{
     width: 80%;
@@ -136,6 +139,10 @@ a{
         right: 5px;
         width: 30px;
         height: 40px;
+    }
+    .imagem-post{
+        margin-left: 10px;
+        margin-top: 20px;
     }
 
 }

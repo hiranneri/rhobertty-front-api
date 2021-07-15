@@ -9,10 +9,13 @@
             
             <Loader v-if="loading" class="loader" />
 
-             <div class="container-posts">
+             <div class="container">
+                 <div class="row d-flex justify-content-center">
+                    <ItemPost v-for="post in postagens" :key="post.titulo" :post="post" 
+                        @excluir="atualizarLista(post)"/>
+
+                 </div>
                 
-                <ItemPost v-for="post in postagens" :key="post.titulo" :post="post" 
-                    @excluir="atualizarLista(post)"/>
                 
             </div>
              
@@ -87,13 +90,6 @@ h1{
 
 .loader{
     text-align: center;
-}
-.container-posts{
-    display: grid;
-    margin-left: 8%;
-    grid-template-columns: 350px 350px 350px;
-    text-align: center;
-   
 }
 @media (max-width: 600px){
     .container-posts{
