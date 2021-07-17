@@ -44,6 +44,9 @@ router.beforeEach((routeTo,routeFrom, next)=>{
   if(!routeTo.meta.publica && !store.state.token){
     return next({path:''})
   }
+  if(routeTo.path==='/' && store.state.token){
+    return next({path:'/home'})
+  }
   next()
 })
 
