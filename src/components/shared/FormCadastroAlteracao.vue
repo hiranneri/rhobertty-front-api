@@ -10,7 +10,7 @@
             <textarea name="texto" id="postagem" v-model="postagem.publicacao" class="form-control" 
                         min="3" max="5000" placeholder="Digite o texto da sua postagem" required></textarea>
         </div>
-        <button class="btn-enviar" @click.prevent="editarPostagem">Editar</button>
+        <button class="btn-enviar" @click.prevent="editarPostagem">OK</button>
     </form>
 
    
