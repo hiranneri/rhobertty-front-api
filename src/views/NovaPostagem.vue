@@ -2,24 +2,14 @@
   <main>
     <h1>Nova Postagem</h1>
     <Mensagem :mensagem="mensagem" :tipoMensagem="tipoMensagem"/>
-    <form>
-        <div class="form-group">
-            <label for="titulo">Título: </label>
-            <input type="text" class="form-control" id="titulo" min="3" max="700" v-model="form.titulo" placeholder="Título" required>
-        </div>
-        <div class="form-group">
-            <label for="postagem">Postagem</label>
-            <textarea name="texto" id="postagem"  class="form-control" 
-                        min="3" max="5000" v-model="form.publicacao" placeholder="Digite o texto da sua postagem" required></textarea>
-        </div>
-        <button class="btn-enviar" @click.prevent="postar">Postar</button>
-    </form>
+    <FormCadastroAlteracao/>
   </main>
 
 </template>
 
 <script>
 import Mensagem from '@/components/shared/Mensagem.vue'
+import FormCadastroAlteracao from '@/components/shared/FormCadastroAlteracao.vue'
 export default {
     name:'nova-postagem',
     data(){
@@ -68,7 +58,8 @@ export default {
         }
     },
     components:{
-        Mensagem
+        Mensagem,
+        FormCadastroAlteracao
     }
 
 }
@@ -90,15 +81,13 @@ section{
     width: 50%;
     margin: 0 auto;   
 }
-#postagem{
-    height: 200px;
+form{
     padding: 40px;
     background: #83a8a8;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-
 }
 
 label{
