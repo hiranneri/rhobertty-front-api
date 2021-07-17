@@ -28,4 +28,7 @@ export default {
     text-align: center;
     font-size: 20px;
 }
+body{
+  background: rgb(89, 155, 117);
+}
 </style>

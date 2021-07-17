@@ -90,7 +90,13 @@ section{
     width: 50%;
     margin: 0 auto;   
 }
-form
+form{
+    width: 50%;
+    margin: 0 auto;
+}
+#postagem{
+    height: 200px;
+}
 
 label{
     font-weight: bold;
@@ -109,10 +115,6 @@ label[for="imagem"]{
 input[type='file']{
     display: none;
     
-}
-form{
-    width: 50%;
-    margin: 0 auto;
 }
 
 .btn-enviar{
