@@ -2,7 +2,7 @@
   <main>
     <h1>Nova Postagem</h1>
     <Mensagem :mensagem="mensagem" :tipoMensagem="tipoMensagem"/>
-    <FormCadastroAlteracao/>
+    <FormCadastroAlteracao @gravar="gravar($event)"/>
   </main>
 
 </template>
@@ -13,21 +13,17 @@ import FormCadastroAlteracao from '@/components/shared/FormCadastroAlteracao.vue
 export default {
     name:'nova-postagem',
     data(){
-        return {
-            form: {
-                titulo:'',
-                publicacao: ''
-            },
+        return {            
             mensagem:'',
             tipoMensagem:''
         }
     },
     methods:{
-        postar(){
-            if(this.validar()){
+        gravar($event){
+            if(this.validar($event)){
                 const usuarioLogado = this.$store.getters.usuarioLogado
                 const idUsuario = usuarioLogado.id
-                const body = this.form
+                const body = $event
                 this.$http.post(`usuario/${idUsuario}/publicacoes`, body)
                 .then(() => {
                     this.tipoMensagem = 'sucesso'
@@ -45,13 +41,14 @@ export default {
                 return;
             }
         },
-        validar(){
-            const titulo = this.form.titulo;
-            const publicacao = this.form.publicacao;
-            if(titulo.length<3 || titulo>700){
+        validar(form){
+            console.log(form.titulo)
+            const titulo = form.titulo;
+            const publicacao = form.publicacao;
+            if(titulo.length<3 && titulo>1000){
                 return false;
             }
-            if(publicacao.length<3 || publicacao.length>5000){
+            if(publicacao.length<3 && publicacao.length>5000){
                 return false;
             }
             return true

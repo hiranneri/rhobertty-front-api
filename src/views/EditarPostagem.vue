@@ -3,7 +3,7 @@
   <main>
     <h1>Editar Postagem</h1>
     <Mensagem :mensagem="mensagem" :tipoMensagem="tipoMensagem"/>
-    <FormCadastroAlteracao :postagem="postagem"/>
+    <FormCadastroAlteracao :postagem="postagem" @gravar="gravar"/>
   </main>
 </div>
 </template>
@@ -21,7 +21,7 @@ export default {
         }
     },
     methods:{
-        editarPostagem(){
+        gravar(){
             const usuarioLogado = this.$store.getters.usuarioLogado
             const idUsuario = usuarioLogado.id
             const idPublicacao = this.$route.params.id
@@ -35,7 +35,8 @@ export default {
                     this.$router.push({name: 'login'})
                     location.reload()
                 })
-        }
+        },
+
     },
     
     computed:{

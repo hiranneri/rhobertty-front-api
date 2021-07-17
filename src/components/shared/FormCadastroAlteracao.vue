@@ -10,7 +10,7 @@
             <textarea name="texto" id="postagem" v-model="postagem.publicacao" class="form-control" 
                         min="3" max="5000" placeholder="Digite o texto da sua postagem" required></textarea>
         </div>
-        <button class="btn-enviar" @click.prevent="editarPostagem">OK</button>
+        <button class="btn-enviar" @click.prevent="gravarPostagem">OK</button>
     </form>
 
    
@@ -22,6 +22,11 @@ export default {
         postagem:{
             type: Object,
             default: ()=>({})
+        }
+    },
+    methods:{
+        gravarPostagem(){
+            this.$emit('gravar', this.postagem);
         }
     }
 }
