@@ -72,6 +72,7 @@ export default {
     border-bottom-right-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     margin: 10px;
+    background:#83a8a8;
 
 }
 .item-post:hover{

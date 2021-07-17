@@ -19,6 +19,6 @@ export default {
 .corpo{
     overflow-y: hidden;
     height: 100vh;
-    background-color: rgb(89, 155, 117);
+    background-color: #a8c8b5;
 }
 </style>

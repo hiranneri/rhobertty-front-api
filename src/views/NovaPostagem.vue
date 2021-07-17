@@ -90,12 +90,15 @@ section{
     width: 50%;
     margin: 0 auto;   
 }
-form{
-    width: 50%;
-    margin: 0 auto;
-}
 #postagem{
     height: 200px;
+    padding: 40px;
+    background: #83a8a8;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
 }
 
 label{
