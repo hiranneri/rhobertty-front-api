@@ -42,7 +42,6 @@ export default {
             }
         },
         validar(form){
-            console.log(form.titulo)
             const titulo = form.titulo;
             const publicacao = form.publicacao;
             if(titulo.length<3 && titulo>1000){
